@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class SkinEditor : MonoBehaviour
 {
-    public GameObject GObject;
-    
-    public MeshFilter _meshFilter;
+    public GameObject PointerObject;
+    public MeshFilter MeshFilter;
     
     public float Force;
     public float VertexTransitionMax = 0.005f;
@@ -27,9 +26,9 @@ public class SkinEditor : MonoBehaviour
 
     private void Start()
     {
-        _mesh = _meshFilter.mesh;
+        _mesh = MeshFilter.mesh;
         _meshBase = _mesh.vertices;
-        _collider = _meshFilter.GetComponent<MeshCollider>();
+        _collider = MeshFilter.GetComponent<MeshCollider>();
         _camera = Camera.main;
         _normals = new List<Vector3>(_mesh.vertexCount);
         _mesh.GetNormals(_normals);
@@ -64,45 +63,34 @@ public class SkinEditor : MonoBehaviour
         {
             if (_currentHit.point != Vector3.zero)
             {
-                GObject.transform.position = _currentHit.point;
-                Debug.Log(_camera.WorldToScreenPoint(_currentHit.normal + _currentHit.point));
-                Debug.DrawRay(_camera.WorldToScreenPoint(_currentHit.point), _camera.WorldToScreenPoint(_currentHit.normal + _currentHit.point) - _camera.WorldToScreenPoint(_currentHit.point), Color.red);
+                PointerObject.transform.position = _currentHit.point;
+
                 var vertexArr = _mesh.vertices;
                 for (int i = 0; i < _updatedVertices.Count; i++)
                 {
-                    var vertexIndex = _updatedVertices[i];
+                    var mouseDragDirection = Input.mousePosition - _dragStartPoint;
+                    var directionIndex = GetDirectionIndex(mouseDragDirection);
 
-                    var vertexPosition = _currentHit.transform.TransformPoint(_meshEdited[vertexIndex]);
-                        var vertexDistance = Vector3.Distance(vertexPosition, _currentHit.point);
-                    
-                        var mouseDragDirection = Input.mousePosition - _dragStartPoint;
-                        var direction = 0f;
-                        Debug.DrawRay(_dragStartPoint, mouseDragDirection, Color.magenta);
-                        //Debug.DrawRay(Vector3.zero, _camera.WorldToScreenPoint(_currentHit.normal), Color.red);
-                        var vectorsAngle = Vector3.Angle(mouseDragDirection, _camera.WorldToScreenPoint(_currentHit.normal + _currentHit.point) - _camera.WorldToScreenPoint(_currentHit.point));
-                        Debug.Log(vectorsAngle);
-                        if (vectorsAngle < 90)
-                        {
-                            direction = 1f * Vector3.Distance(Input.mousePosition, _dragStartPoint);
-                        }
-                        else
-                        {
-                            direction = -1 * Vector3.Distance(Input.mousePosition, _dragStartPoint);
-                        }
-                    var futurePosition = _meshEdited[vertexIndex] + (direction * Force * (BrushSize - vertexDistance) * _normals[vertexIndex]);
-                    var transitionDistance = Vector3.Distance(futurePosition, _meshBase[vertexIndex]);
+                    var vertexIndex = _updatedVertices[i];
+                    var startEditVertexPosition = _meshEdited[vertexIndex];
+                    var vertexWorldPosition = _currentHit.transform.TransformPoint(startEditVertexPosition);
+                    var approximationDistance = Vector3.Distance(vertexWorldPosition, _currentHit.point);
+
+                    var futurePosition = GetNextVertexPosition(directionIndex, approximationDistance, vertexIndex);
+                    var baseVertexPosition = _meshBase[vertexIndex];
+                    var transitionDistance = Vector3.Distance(futurePosition, baseVertexPosition);
 
                     if (transitionDistance < VertexTransitionMax)
                     {
-            
-                        vertexPosition = futurePosition;
-                        vertexArr[vertexIndex] = vertexPosition;
+                        vertexWorldPosition = futurePosition;
+                        vertexArr[vertexIndex] = vertexWorldPosition;
                     }
-                    //else
-                    //{
-                    //    vertexPosition = _meshBase[vertexIndex] + ((_meshEdited[vertexIndex] - _meshBase[vertexIndex]).normalized * VertexTransitionMax);
-                    //    vertexArr[vertexIndex] = vertexPosition;
-                    //}
+                    else
+                    {
+                        var maxFuturePosition = GetMaxNextPosition(vertexIndex, directionIndex);
+                        vertexWorldPosition = baseVertexPosition + maxFuturePosition;
+                        vertexArr[vertexIndex] = vertexWorldPosition;
+                    }
                 }
 
                 _mesh.vertices = vertexArr;
@@ -117,11 +105,39 @@ public class SkinEditor : MonoBehaviour
             _meshEdited = _mesh.vertices;
         }
     }
-    
-    public const float Epsilon = 0.00001f;
 
-    public static bool AreCodirected(Vector2 a, Vector2 b)
+    private Vector3 GetMaxNextPosition(int vertexIndex, float directionIndex)
     {
-        return Vector2.Dot(a, b) > 1 - Epsilon;
+        var maxFuturePosition = _normals[vertexIndex].normalized * VertexTransitionMax * directionIndex;
+        return maxFuturePosition;
+    }
+
+    private float GetDirectionIndex(Vector3 mouseDragDirection)
+    {
+        var directionIndex = 0f;
+
+        var vectorsAngle = Vector3.Angle(mouseDragDirection,
+            _camera.WorldToScreenPoint(_currentHit.normal + _currentHit.point) -
+            _camera.WorldToScreenPoint(_currentHit.point));
+        if (vectorsAngle < 90)
+        {
+            directionIndex = 1f;
+        }
+        else
+        {
+            directionIndex = -1;
+        }
+
+        return directionIndex;
+    }
+
+    private Vector3 GetNextVertexPosition(float directionIndex, float approximationDistance, int vertexIndex)
+    {
+        var scaledDirection = directionIndex * Vector3.Distance(Input.mousePosition, _dragStartPoint);
+        var vertexRemoteness = BrushSize - approximationDistance;
+        var normal = _normals[vertexIndex];
+        var editStartPoint = _meshEdited[vertexIndex];
+        var futurePosition = editStartPoint + (scaledDirection * Force * vertexRemoteness * normal);
+        return futurePosition;
     }
 }
