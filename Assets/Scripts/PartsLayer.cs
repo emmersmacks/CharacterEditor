@@ -7,6 +7,12 @@ namespace DefaultNamespace
 {
     public class PartsLayer : MonoBehaviour
     {
+        [SerializeField] 
+        private Transform _cameraTargetPoint;
+
+        [SerializeField] 
+        private CameraMoveComponent _cameraMoveComponent;
+    
         [FormerlySerializedAs("onSet")]
         [SerializeField]
         private Button.ButtonClickedEvent m_OnSet = new Button.ButtonClickedEvent();
@@ -17,7 +23,9 @@ namespace DefaultNamespace
 
         public void Set()
         {
-            m_OnSet?.Invoke(); 
+            if(_cameraTargetPoint != null)
+                _cameraMoveComponent.SetTarget(_cameraTargetPoint);
+            m_OnSet?.Invoke();
         }
 
         public void Remove()

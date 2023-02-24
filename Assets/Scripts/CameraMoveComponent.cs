@@ -9,6 +9,8 @@ public class CameraMoveComponent : MonoBehaviour
     private Camera _camera;
     private Transform _target;
 
+    private Transform _currentPosition;
+
     void Start()
     {
         _camera = Camera.main;
@@ -18,11 +20,12 @@ public class CameraMoveComponent : MonoBehaviour
     {
         if (_target != null)
         {
-            var targetPosition = _target.position + Vector3.forward + new Vector3(-0.5f, 0, 0);
+            var targetPosition = _target.position + new Vector3(-0.2f, 0, 0.5f);
             var direction = targetPosition - _camera.transform.position;
             _camera.transform.position += direction.normalized * Speed * Time.deltaTime;
-            if (Vector3.Distance(targetPosition, _camera.transform.position) < 0.1)
+            if (Vector3.Distance(targetPosition, _camera.transform.position) < 0.01)
             {
+                _currentPosition = _target;
                 _target = null;
             }
         }
@@ -30,6 +33,10 @@ public class CameraMoveComponent : MonoBehaviour
 
     public void SetTarget(Transform target)
     {
-        _target = target;
+        if (_currentPosition != target)
+        {
+            _currentPosition = target;
+            _target = target;
+        }
     }
 }
