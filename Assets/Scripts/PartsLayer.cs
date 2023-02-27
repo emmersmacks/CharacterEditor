@@ -7,6 +7,7 @@ namespace DefaultNamespace
 {
     public class PartsLayer : MonoBehaviour
     {
+        public bool IsFixed;
         [SerializeField] 
         private Transform _cameraTargetPoint;
 

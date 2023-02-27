@@ -6,14 +6,14 @@ using UnityEngine;
 public class LayerSelector : MonoBehaviour
 {
     public MousePointer Pointer;
-    
+    public LayerManager LayerManager;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             if (Pointer.SelectedItem.TryGetComponent<PartsLayer>(out var layer))
             {
-                layer.Set();
+                LayerManager.SetLayer(layer);
             }
         }
     }

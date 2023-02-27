@@ -8,6 +8,7 @@ namespace DefaultNamespace
         public PartsLayer[] Layers;
 
         private PartsLayer _currentLayer;
+        public CameraMoveComponent CameraMoveComponent;
 
         public bool SetLayer(PartsLayer layer)
         {
@@ -15,6 +16,12 @@ namespace DefaultNamespace
             {
                 if (partsLayer == layer)
                 {
+                    if(layer.IsFixed)
+                        CameraMoveComponent.SetCameraMode(ECameraMode.Fixed);
+                    else
+                    {
+                        CameraMoveComponent.SetCameraMode(ECameraMode.Observable);
+                    }
                     _currentLayer = layer;
                     _currentLayer.Set();
                     return true;

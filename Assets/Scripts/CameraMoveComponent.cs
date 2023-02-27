@@ -7,8 +7,8 @@ public class CameraMoveComponent : MonoBehaviour
 {
     public float Speed;
 
-    public CinemachineVirtualCamera FixedCamera;
-    public CinemachineVirtualCamera FreeLookCameraCamera;
+    public CinemachineVirtualCameraBase FixedCamera;
+    public CinemachineVirtualCameraBase FreeLookCameraCamera;
     
     private Camera _camera;
     private CinemachineBrain _cameraBrain;
@@ -21,6 +21,7 @@ public class CameraMoveComponent : MonoBehaviour
     {
         _camera = Camera.main;
         _cameraBrain = _camera.GetComponent<CinemachineBrain>();
+        SetCameraMode(ECameraMode.Fixed);
     }
     
     void Update()
@@ -41,7 +42,10 @@ public class CameraMoveComponent : MonoBehaviour
         }
         else
         {
-            
+            if (Input.GetMouseButton(1))
+            {
+                
+            }
         }
     }
 
@@ -76,3 +80,5 @@ public enum ECameraMode
     Fixed,
     Observable
 }
+
+

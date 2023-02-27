@@ -529,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 247370961}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -842,7 +843,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 2
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -871,15 +872,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499544964}
-  m_LocalRotation: {x: -0.04241411, y: 0.91442066, z: -0.09942947, w: -0.39006382}
-  m_LocalPosition: {x: 6.0962176, y: 3.4305642, z: 6.773557}
+  m_LocalRotation: {x: -0.0038318145, y: 0.9923416, z: -0.11927821, w: -0.031878993}
+  m_LocalPosition: {x: -0.73, y: 1.92, z: 3.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1145155863}
   m_Father: {fileID: 0}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.708, y: 183.68, z: 0}
 --- !u!1 &503836544
 GameObject:
   m_ObjectHideFlags: 3
@@ -1086,6 +1087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 1501229982}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -1236,6 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 678250349}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -1478,6 +1481,7 @@ MonoBehaviour:
   Layers:
   - {fileID: 1747324801}
   - {fileID: 1485216611}
+  CameraMoveComponent: {fileID: 963194230}
 --- !u!1 &955204085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,6 +1610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 90896800}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -1707,14 +1712,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.04241411, y: 0.91442066, z: -0.09942947, w: -0.39006382}
-  m_LocalPosition: {x: 6.0962176, y: 3.4305642, z: 6.773557}
+  m_LocalRotation: {x: -0.0038318145, y: 0.9923416, z: -0.11927821, w: -0.031878993}
+  m_LocalPosition: {x: -0.73, y: 1.92, z: 3.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.708, y: 183.68, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1745,6 +1750,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  FixedCamera: {fileID: 499544965}
+  FreeLookCameraCamera: {fileID: 2117642826}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2289,6 +2296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 1556752600}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -2439,6 +2447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 193074538}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -2588,6 +2597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 2104096643}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -3093,6 +3103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pointer: {fileID: 1742273973}
+  LayerManager: {fileID: 736120010}
 --- !u!1 &1747324799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,6 +3159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 967849070}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -3284,6 +3296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 90973675}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -3464,6 +3477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 1788453785}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -3600,6 +3614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 374528659}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
@@ -3754,7 +3769,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 2104096643}
   m_Follow: {fileID: 2104096643}
@@ -3988,6 +4003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738ed3b525ae4e089f7cf55454832a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsFixed: 0
   _cameraTargetPoint: {fileID: 1199068173}
   _cameraMoveComponent: {fileID: 963194230}
   m_OnSet:
