@@ -41,18 +41,44 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PartsLayer.cs" />
+     <Compile Include="Assets\Scripts\LayerS\PartsLayer.cs" />
      <Compile Include="Assets\PBS Materials Variety Pack\zzz\MaterialRandomizerScript.cs" />
+     <Compile Include="Assets\Scripts\Bootstrapp.cs" />
      <Compile Include="Assets\Scripts\RotateMouseComponent.cs" />
-     <Compile Include="Assets\Scripts\SkinEditor.cs" />
-     <Compile Include="Assets\Scripts\MousePointer.cs" />
+     <Compile Include="Assets\Scripts\MeshEditor\MeshEditorWindow.cs" />
+     <Compile Include="Assets\Scripts\SkinEditor\SkinEditor.cs" />
+     <Compile Include="Assets\Scripts\Selector\MousePointer.cs" />
      <Compile Include="Assets\PBS Materials Variety Pack\zzz\MaterialRandomizer.cs" />
-     <Compile Include="Assets\Scripts\BodyPart.cs" />
-     <Compile Include="Assets\Scripts\CameraMoveComponent.cs" />
-     <Compile Include="Assets\Scripts\CharacterView.cs" />
-     <Compile Include="Assets\Scripts\LayerManager.cs" />
-     <Compile Include="Assets\Scripts\LayerSelector.cs" />
+     <Compile Include="Assets\Scripts\Selector\BodyPart.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraMoveComponent.cs" />
+     <Compile Include="Assets\Scripts\LayerS\LayerManager.cs" />
+     <Compile Include="Assets\Scripts\LayerS\LayerSelector.cs" />
+     <Compile Include="Assets\Scripts\LayerS\LayerEvent.cs" />
+     <Compile Include="Assets\Scripts\MeshEditor\MeshEditorInspector.cs" />
+     <Compile Include="Assets\Scripts\MeshEditor\MeshEditorSettings.cs" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\PBS Materials Variety Pack\readme.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne.json" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
@@ -707,6 +733,9 @@
      <Reference Include="PPv2URPConverters">
      <HintPath>C:\GitUnity\CharacterEditor\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
      </Reference>
+     <Reference Include="NaughtyAttributes.Test">
+     <HintPath>C:\GitUnity\CharacterEditor\Library\ScriptAssemblies\NaughtyAttributes.Test.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Runtime">
      <HintPath>C:\GitUnity\CharacterEditor\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
      </Reference>
@@ -725,11 +754,17 @@
      <Reference Include="Unity.RenderPipelines.Universal.Editor">
      <HintPath>C:\GitUnity\CharacterEditor\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="NaughtyAttributes.Editor">
+     <HintPath>C:\GitUnity\CharacterEditor\Library\ScriptAssemblies\NaughtyAttributes.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
      <HintPath>C:\GitUnity\CharacterEditor\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
      <HintPath>C:\GitUnity\CharacterEditor\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+     </Reference>
+     <Reference Include="NaughtyAttributes.Core">
+     <HintPath>C:\GitUnity\CharacterEditor\Library\ScriptAssemblies\NaughtyAttributes.Core.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Core.Editor">
      <HintPath>C:\GitUnity\CharacterEditor\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
